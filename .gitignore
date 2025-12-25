@@ -187,3 +187,10 @@ target/
 *.jpg
 *.jpeg
 *.gif
+*.bmp
+*.tiff
+*.svg
+*.ico
+*.webp
+*.pdf
+*.docx
