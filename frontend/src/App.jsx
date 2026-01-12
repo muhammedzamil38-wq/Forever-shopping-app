@@ -17,7 +17,7 @@ import Verify from "./pages/Verify";
 import Loading from "./components/Loading";
 
 
-const App = React.lazy(()=>{
+const AppLazy = React.lazy(()=>{
   return import('./pages/Collection')
 })
 
@@ -29,7 +29,7 @@ const App = () => {
       <SearchBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-       <Suspense fallback={<Loading/>} > <Route path="/collection" element={<App />} /></Suspense>
+       <Suspense fallback={<Loading/>} > <Route path="/collection" element={<AppLazy />} /></Suspense>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:productId" element={<Product />} />
