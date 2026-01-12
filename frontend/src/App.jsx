@@ -1,7 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Collection from "./pages/Collection";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Product from "./pages/Product";
@@ -15,6 +14,12 @@ import SearchBar from "./components/SearchBar";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import Verify from "./pages/Verify";
+import Loading from "./components/Loading";
+
+
+const app = React.lazy(()=>{
+  return import('./pages/Collection')
+})
 
 const App = () => {
   return (
@@ -24,7 +29,7 @@ const App = () => {
       <SearchBar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/collection" element={<Collection />} />
+       <Suspense fallback={<Loading/>} > <Route path="/collection" element={<Collection />} /></Suspense>
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:productId" element={<Product />} />
