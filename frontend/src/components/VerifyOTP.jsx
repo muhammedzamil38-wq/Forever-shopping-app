@@ -22,9 +22,8 @@ const VerifyOTP = () => {
                 localStorage.setItem("token", response.data.token)
                 navigate('/')
             }else{
-                toast.error(response.data.message
-                    
-                )
+                toast.error(response.data.message)
+                console.log(response.data.message);
             }
         } catch (error) {
             console.log(error);
