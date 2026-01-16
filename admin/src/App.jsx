@@ -8,11 +8,14 @@ import Orders from "./pages/Orders";
 import Login from "./components/Login";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+import { useLocation,useNavigate } from 'react-router-dom';
 
 export const backendUrl = import.meta.env.VITE_BACKEND_URL
 export const currency = "$"
 
 const App = () => {
+  const location = useLocation()
+  const navigate = useNavigate()
   const [token, setToken] = useState(localStorage.getItem('token')?localStorage.getItem('token'):'');
   useEffect(()=>{
     localStorage.setItem('token',token)
@@ -24,6 +27,7 @@ const App = () => {
         <Login setToken={setToken} />
       ) : (
         <>
+        {location.pathname === '/' ? navigate('/add') : ''}
           <Navbar setToken={setToken}/>
           <hr />
           <div className="flex w-full">
